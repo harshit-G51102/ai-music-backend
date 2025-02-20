@@ -6,6 +6,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from google import genai
 import json
+from django.conf import settings
+
 
 class RecommendationView(APIView):
     def get(self, request):
@@ -15,8 +17,10 @@ class RecommendationView(APIView):
 
 class MusicRecommenderAI(APIView):
     def post(self, request):
+
+        api_key = settings.GENAI_API_KEY
         # Initialize the genai client with the API key from settings
-        client = genai.Client(api_key='AIzaSyCNnQ09gIwsFrtVpcL-hol_f7b7_WwoVyQ')
+        client = genai.Client(api_key=api_key)
         
         # Get user query (you can also use `request.data.get('query', '')` if provided from the frontend)
         user_query = request.data.get('query', '')
