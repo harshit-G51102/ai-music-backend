@@ -11,7 +11,8 @@ from django.conf import settings
 
 class RecommendationView(APIView):
     def get(self, request):
-        data = {"message": "hello i am music api"}  # Response data
+        api_key = settings.GENAI_API_KEY
+        data = {"message": api_key}  # Response data
         return Response(data, status=status.HTTP_200_OK)  # Returning response
 
 
