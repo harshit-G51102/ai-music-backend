@@ -11,8 +11,7 @@ from django.conf import settings
 
 class RecommendationView(APIView):
     def get(self, request):
-        api_key = settings.GENAI_API_KEY
-        data = {"message": api_key}  # Response data
+        data = {"message": "connected to backend"}  # Response data
         return Response(data, status=status.HTTP_200_OK)  # Returning response
 
 
